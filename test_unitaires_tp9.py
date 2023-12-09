@@ -1,5 +1,6 @@
-from unittest import TestCase
 from calcul import Fraction
+from unittest import TestCase
+
 
 
 class TestFraction(TestCase):
