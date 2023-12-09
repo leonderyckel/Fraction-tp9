@@ -1,0 +1,29 @@
+
+On peut voir que le test coverage est de 98% dans la classe fraction ce qui est acceptable. Les précondtions sont testé ainsi que les valeurs normales, limites. Les cas menant à des erreurs sont aussi testé ainsi que les cas problématiques.  
+
+Constructeur (__init__) :
+Valeurs par défaut, valeurs normales, grandes valeurs, valeurs négatives pour le numérateur et le dénominateur, numérateur ou dénominateur nuls, et exceptions.
+
+Méthode de représentation (__str__) :
+Valeurs par défaut, valeurs normales, valeurs négatives pour le numérateur et le dénominateur, numérateur ou dénominateur nuls.
+
+Méthode as_mixed_number :
+Valeurs par défaut, valeurs normales, grandes valeurs, valeurs négatives pour le numérateur et le dénominateur, numérateur ou dénominateur nuls.
+
+Opération d'addition (__add__) :
+Valeurs par défaut, valeurs normales, grandes valeurs, valeurs négatives pour le numérateur et le dénominateur, numérateur ou dénominateur nuls.
+
+Opération de division (__truediv__) :
+Valeurs par défaut, valeurs normales, grandes valeurs, valeurs négatives pour le numérateur et le dénominateur, numérateur ou dénominateur nuls, exceptions.
+
+Opération d'égalité (__eq__) :
+Différentes fractions pour tester l'égalité et l'inégalité.
+
+Méthode is_integer :
+Différentes fractions pour tester si la fraction est un entier.
+
+Méthode is_proper :
+Différentes fractions pour tester si la fraction est propre.
+
+Méthode is_adjacent_to :
+Différentes fractions pour tester si deux fractions sont adjacentes.
