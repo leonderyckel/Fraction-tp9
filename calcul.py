@@ -1,12 +1,12 @@
 class Fraction:
-    def __init__(self, numerateur: int, denominateur: int):
+    def __init__(self, numerateur: int = 0, denominateur: int = 1):
         """Construit la fraction avec un numérateur et dénominateur
 
-               PRE : le numérateur int, et le dénominateur int
-               POST : construit la fraction, de numerateur et denominateur indiqué en parametre, si le dénominateur est négatif,
-                      on passe le - au numérateur et si le numérateur et le dénominateur sont négatifs les 2 deviennent positifs.
-                      le self.__num et le self.__den sont privés et ne sont pas modifiable en dehors de la classe (encapsulation)
-               RAISES : ZeroDivisionError si le denominateur est nul, TypeError si un élément n'est pas un int
+               PRE : le numérateur int, et le dénominateur int POST : construit la fraction, de numerateur et
+               denominateur indiqué en parametre, si le dénominateur est négatif, on passe le - au numérateur et si
+               le numérateur et le dénominateur sont négatifs les 2 deviennent positifs. le self.__num et le
+               self.__den sont privés et ne sont pas modifiable en dehors de la classe (encapsulation) RAISES :
+               ZeroDivisionError si le denominateur est nul, TypeError si un élément n'est pas un int
 
         """
         if denominateur == 0:
@@ -37,29 +37,7 @@ class Fraction:
         den = self.__denominateur * other.__denominateur
         return Fraction(num, den)
 
-    def __sub__(self, other: 'Fraction') -> 'Fraction':
-        """
-        Effectue la soustraction de deux fractions.Surcharge de l'opérateur - pour les fractions.
 
-        Pre: self, la fraction. other, l'autre fraction à soustraire
-        Post:  retourne un object de la classe Fraction egale à la différence des deux fractions
-        """
-        self._validate_fraction(other)
-        num = self.__numerateur * other.__denominateur - other.__numerateur * self.__denominateur
-        den = self.__denominateur * other.__denominateur
-        return Fraction(num, den)
-
-    def __mul__(self, other: 'Fraction') -> 'Fraction':
-        """
-        Effectue la multiplication de deux fractions.Surcharge de l'opérateur * pour les fractions.
-
-        Pre: self, la fraction. other, l'autre fraction à multiplier
-        Post:  retourne un object de la classe Fraction egale à la multiplication des deux fractions
-        """
-        self._validate_fraction(other)
-        num = self.__numerateur * other.__numerateur
-        den = self.__denominateur * other.__denominateur
-        return Fraction(num, den)
 
     def __truediv__(self, other: 'Fraction') -> 'Fraction':
         """
@@ -77,22 +55,7 @@ class Fraction:
             raise ZeroDivisionError("Division par zéro.")
         return Fraction(num, den)
 
-    def __pow__(self, other: 'Fraction') -> 'Fraction':
-        """
-        Effectue la puissance de la premiere fraction avec le numérateur de la seconde
-        Surcharge de l'opérateur ** pour les fractions.
-        PRE :self, la fraction. Other, la fraction doit être un nombre entier positif. donc le dénominateur doit etre 1
-        POST : retourne un nouveau objet Fraction egale à la puissance de la premiere par la seconde
-        RAISES : ValueError si l'exposant n'est pas un entier, si l'exposant est négatif
-        """
-        if other.__denominateur != 1:
-            raise ValueError("Le dénominateur doit etre 1.")
-        if other.__numerateur < 0:
-            raise ValueError("Pas d'exposant négatif possible")
 
-        num = self.__numerateur ** other.__numerateur
-        den = self.__denominateur ** other.__numerateur
-        return Fraction(num, den)
 
     def __eq__(self, other: 'Fraction') -> bool:
         """
@@ -107,23 +70,9 @@ class Fraction:
         num2 = other.__numerateur * self.__denominateur
         return num1 == num2
 
-    def __float__(self):
-        """
-         Renvoie la valeur décimale de la fraction. Surcharge de la méthode __float__
 
-         PRE : self, La fraction
-         POST : retourne La valeur décimale de cette fraction
-        """
-        return self.__numerateur / self.__denominateur
 
-    def is_zero(self):
-        """
-        Vérifier si la valeur d'une fraction est 0
 
-        PRE : self, La fraction
-        POST : retourne 'True' si la fraction est égale à zero, sinon renvoi 'False'
-        """
-        return self.__numerateur == 0
 
     def is_integer(self):
         """
@@ -143,15 +92,6 @@ class Fraction:
                 """
         return abs(self.__numerateur) < abs(self.__denominateur)
 
-    def is_unit(self):
-        """
-        Vérifie si le numérateur d'une fraction est 1 sous sa forme réduite
-
-        PRE : self, La fraction
-        POST : retourne 'True' si le numérateur est 1, sinon renvoi 'False'
-               """
-        gcd_value = self._gcd(self.__numerateur, self.__denominateur)
-        return self.__numerateur // gcd_value == 1
 
     def is_adjacent_to(self, other):
         """
@@ -162,11 +102,13 @@ class Fraction:
             PRE : self, La fraction other, l'autre fraction
             POST : retourne 'True' si les deux fraction diffèrent d'une fraction unitaire, sinon retourne 'False'
         """
+
         self._validate_fraction(other)
-        num = (self.__numerateur * other.__denominateur) - (other.__numerateur * self.__denominateur)
-        den = (self.__denominateur * other.__denominateur)
-        gcd_value = self._gcd(num, den)
-        return abs(num // gcd_value) == 1
+        difference = self.__numerateur * other.__denominateur - other.__numerateur * self.__denominateur
+
+        difference_abs = abs(difference)
+        return difference_abs == 1
+
 
     def as_mixed_number(self):
         """
@@ -231,7 +173,10 @@ class Fraction:
         Pre: self, la fraction
         Post: renvoi str, représentation textuelle de la fraction
         """
-        return f"{self.__numerateur}/{self.__denominateur}" if self.__denominateur != 1 else str(self.__numerateur)
+        if self.__denominateur == 1:
+            return str(self.__numerateur)
+        else:
+            return f"{self.__numerateur}/{self.__denominateur}"
 
     @property
     def numerateur(self):
