@@ -1,5 +1,6 @@
 
-On peut voir que le test coverage est de 98% dans la classe fraction ce qui est acceptable. Les précondtions sont testé ainsi que les valeurs normales, limites. Les cas menant à des erreurs sont aussi testé ainsi que les cas problématiques.  
+On peut voir que le test coverage est de 80% dans la classe fraction ce qui est acceptable étant donné que les methodes sub,mul,pow,float,is_zero et is_unit ne sont pas testé.Dans toutes les autres méthodes, Les précondtions sont testé ainsi que les valeurs normales, limites. Les cas menant à des erreurs sont aussi testé ainsi que les cas problématiques et on 
+peut voir que les tests les couvrent toutes. 
 
 Constructeur (__init__) :
 Valeurs par défaut, valeurs normales, grandes valeurs, valeurs négatives pour le numérateur et le dénominateur, numérateur ou dénominateur nuls, et exceptions.
