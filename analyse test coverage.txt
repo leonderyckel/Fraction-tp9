@@ -4,7 +4,7 @@ Dans toutes les autres méthodes, Les précondtions sont testé ainsi que les va
 Le test coverage permet donc de voir quelle portion de notre code a ete teste mais cela ne veut pas dire que toutes les possiblités de test ont été faite pour chaque pourcentage de code couvert.
 En effet, dans mon code toutes les methodes qui devaient etre teste sont bien affiché avec une ligne verte à cote ce qui veut dire que les tests ont été effectué dessus mais cela ne veut pas
 forcément dire que toutes les possibilité existante ont été teste. C'est donc un bon indiquateur pour voir si le code est correct mais on ne peut pas non plus affirmer que tout est totalement correct
-parce que la barre de test coverage est verte à cote de la méthode.
+juste parce que la barre de test coverage est verte à cote de la méthode.
 
 Constructeur (__init__) :
 Valeurs par défaut, valeurs normales, grandes valeurs, valeurs négatives pour le numérateur et le dénominateur, numérateur ou dénominateur nuls, et exceptions.
